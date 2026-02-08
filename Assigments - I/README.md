@@ -11,7 +11,7 @@
 -   TCP_client.py
 ```
 
-## UDP Protocal
+## UDP Protocol
 ### **1. Start the Server**
 
 Open a terminal and navigate to the project directory.
@@ -47,7 +47,7 @@ Expected output:
     Sending to localhost:12000...
     Server response: TESTING UDP PROTOCOL
 
-## TCP Protocal
+## TCP Protocol
 ### **1. Start the Server**
 
 Open a terminal and navigate to the project directory.
@@ -122,7 +122,7 @@ You will see:
 #### 
 
 
-### Enter Phone Details in Python
+### Enter Phone Details in Python script
 
 Script will ask:
 
