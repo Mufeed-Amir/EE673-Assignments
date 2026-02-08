@@ -107,8 +107,9 @@ python UDP_chatApp.py
 
 You will see:
 
-    Computer IP address is: <Your Computer IP>
-    Enter phone IP:  
+    Remote IP address is: <Your computer IP>
+    Remote PORT is: 19999
+    Enter phone IP:
 
 ### Open the app and set:
 
@@ -122,7 +123,7 @@ You will see:
 #### 
 
 
-### Enter Phone Details in Python script
+### Enter Phone Details in Terminal
 
 Script will ask:
 
@@ -151,6 +152,17 @@ Inside the script add your IITK email address and password:
 # ==============================
 USERNAME = "mmamir22@iitk.ac.in"   # Sender email / login username
 PASSWORD = "password"              # Email password (keep secure)
+```
+**Note:**
+If you are using `GMAIL` account to send email use `app password` not gmail password \
+Also update `SMTP SERVER CONFIGURATION`:
+
+```python
+# ==============================
+# SMTP SERVER CONFIGURATION
+# ==============================
+SERVER = "smtp.gmail.com"   # SMTP server hostname
+PORT = 587                    # Standard SMTP port
 ```
 
 ### 2. Update TO, CC, BCC & BODY

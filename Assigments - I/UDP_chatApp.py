@@ -12,10 +12,11 @@ def get_local_ip():
         sock.close()
     return ip
 
-print("Computer IP address is:", get_local_ip())
-
 LOCAL_IP = "0.0.0.0"  # Listen on all interfaces (allows receiving from any IP)
 LOCAL_PORT = 19999       # Port your computer will listen on
+
+print("Remote IP address is:", get_local_ip())
+print("Remote PORT is:", LOCAL_PORT)
 
 #   for phone's IP and port (destination for outgoing messages)
 PHONE_IP = input("Enter phone IP: ")

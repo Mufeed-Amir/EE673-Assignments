@@ -1,25 +1,26 @@
 from socket import *
 import base64
 from email.utils import formatdate, make_msgid
+import ssl
 
 # ==============================
 # SMTP SERVER CONFIGURATION
 # ==============================
-SERVER = "mmtp.iitk.ac.in"   # SMTP server hostname
-PORT = 25                    # Standard SMTP port
+SERVER = "mmtp.iitk.ac.in"    # SMTP server hostname
+PORT   = 25                   # Standard SMTP port
 
 # ==============================
 # AUTHENTICATION CREDENTIALS
 # ==============================
 USERNAME = "mmamir22@iitk.ac.in"   # Sender email / login username
-PASSWORD = "password"              # Email password
+PASSWORD = ""                      # Email password
 
 # ==================================
 # EMAIL METADATA, BODY & ATTACHMENTS 
 # ==================================
-TO  = ["mufeed.amir.17290@gmail.com"]     # Primary recipients
-CC  = []                                  # Carbon copy recipients
-BCC = ["muhammadmameer22@gmail.com"]     # Blind carbon copy recipients
+TO  = ["muhammadmameer22@gmail.com"]     # Primary recipients
+CC  = []                                 # Carbon copy recipients
+BCC = ["mufeed.amir.17290@gmail.com"]    # Blind carbon copy recipients
 
 SUBJECT = "MAIL CLIENT - EE673 ASSIGNMENT - I"
 
@@ -32,7 +33,8 @@ Mohd Amir
 """
 
 # ---------- attachments ----------
-filenames = ["filename1.pdf", "filename2.pdf"]
+# Add files names or file paths to this list to attach them to the email
+filenames = []
 
 # ============================================================
 # CREATE TCP SOCKET AND CONNECT TO SMTP SERVER
@@ -81,6 +83,14 @@ def send(cmd, expected_codes=None):
 # ============================================================
 recv(["220"])                 # Server greeting
 
+send("EHLO client", ["250"])  # Extended handshake (EHLO is like HELO but for modern servers)
+send("STARTTLS", ["220"])     # Upgrade to secure TLS connection
+
+# Wrap the existing socket with SSL for encryption
+context = ssl.create_default_context()
+client = context.wrap_socket(client, server_hostname=SERVER)
+
+send("EHLO client", ["250"])
 send("AUTH LOGIN", ["334"])   # Begin authentication
 
 # Username must be Base64 encoded
